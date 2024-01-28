@@ -49,17 +49,35 @@ function gradeQuiz(candidateAnswers) {
   //   console.log("Incorrect.")
   // }
   // console.log(candidateAnswers);
-console.log(`
-You answered: ${candidateAnswers[0]} . The correct answer is ${correctAnswers[0]}
-You answered: ${candidateAnswers[1]} . The correct answer is ${correctAnswers[1]}
-You answered: ${candidateAnswers[2]} . The correct answer is ${correctAnswers[2]}
-You answered: ${candidateAnswers[3]} . The correct answer is ${correctAnswers[3]}
-You answered: ${candidateAnswers[4]} . The correct answer is ${correctAnswers[4]}
-`)
+  for (let i = 0; i < candidateAnswers.length ; i++) {
+    console.log (` You answered: ${candidateAnswers[i]} . The correct answer is ${correctAnswers[i]} `)
+  }
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+//   console.log(`
+// You answered: ${candidateAnswers[0]} . The correct answer is ${correctAnswers[0]}
+// You answered: ${candidateAnswers[1]} . The correct answer is ${correctAnswers[1]}
+// You answered: ${candidateAnswers[2]} . The correct answer is ${correctAnswers[2]}
+// You answered: ${candidateAnswers[3]} . The correct answer is ${correctAnswers[3]}
+// You answered: ${candidateAnswers[4]} . The correct answer is ${correctAnswers[4]}
+// `) 
+// case sensitivity
 
+  let grade = 0;  //TODO 3.2 use this variable to calculate the candidates score.
+  for (let i = 0; i < candidateAnswers.length; i++){
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      grade += 1;
+    }
+  }
+  grade /= candidateAnswers.length;
+  grade *= 100
+  // grade += 
 
+// console.log(` You scored ${grade} , out of 100% `)
+  if (grade >= 80) {
+    console.log(`You have passed this test with ${grade}%!`);
+  } else {
+    console.log(`You have failed this test. Your score is ${grade}%.`)
+  }
   return grade;
 }
 
